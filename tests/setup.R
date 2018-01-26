@@ -167,4 +167,12 @@ library(convey)
 uspums_design <- convey_prep( uspums_design )
 
 svygini( ~ hinc , uspums_design , na.rm = TRUE )
+library(srvyr)
+uspums_srvyr_design <- as_survey( uspums_design )
+uspums_srvyr_design %>%
+	summarize( mean = survey_mean( poverty_status , na.rm = TRUE ) )
+
+uspums_srvyr_design %>%
+	group_by( state_name ) %>%
+	summarize( mean = survey_mean( poverty_status , na.rm = TRUE ) )
 
