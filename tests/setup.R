@@ -167,6 +167,7 @@ library(convey)
 uspums_design <- convey_prep( uspums_design )
 
 svygini( ~ hinc , uspums_design , na.rm = TRUE )
+library(dbplyr)
 library(srvyr)
 uspums_srvyr_design <- as_survey( uspums_design )
 uspums_srvyr_design %>%
